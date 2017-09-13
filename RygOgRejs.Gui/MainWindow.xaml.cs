@@ -40,8 +40,8 @@ namespace RygOgRejs.Gui
         private void ButtonJourneys_Click(object sender, RoutedEventArgs e)
         {
             JourneyRepository Kapp = new JourneyRepository();
-            var d = DateTime.Now;
-            Kapp.GetAll();
+            string fullName = "Morten Kappa";
+            Kapp.GetJourneyBy(fullName);
             currentUserControlCentre = new DataViewJourneys(testEntities);
             userControlCentre.Content = currentUserControlCentre;
         }
