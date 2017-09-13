@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using RygOgRejs.Entities;
+using RygOgRejs.DataAccess;
+
 namespace RygOgRejs.Gui
 {
     /// <summary>
@@ -37,6 +39,9 @@ namespace RygOgRejs.Gui
 
         private void ButtonJourneys_Click(object sender, RoutedEventArgs e)
         {
+            JourneyRepository Kapp = new JourneyRepository();
+            var d = DateTime.Now;
+            Kapp.GetAll();
             currentUserControlCentre = new DataViewJourneys(testEntities);
             userControlCentre.Content = currentUserControlCentre;
         }

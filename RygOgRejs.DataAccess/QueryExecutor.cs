@@ -8,20 +8,25 @@ using System.Data.SqlClient;
 
 namespace RygOgRejs.DataAccess
 {
-    class QueryExecutor
+    public class QueryExecutor
     {
         private string connectionString;
         public DataSet Execute(string sqlQuery)
         {
             SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
             SqlCommand command = new SqlCommand(sqlQuery, connection);
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
                 DataSet set = new DataSet();
                 adapter.Fill(set);
+                connection.Close();
                 return set;
             }
+
         }
+
+        //something will be added
         public DataSet Execute(SqlCommand command)
         {
             return null;
@@ -30,6 +35,15 @@ namespace RygOgRejs.DataAccess
         public QueryExecutor()
         {
             connectionString = GetConnectionString();
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionString);
+                connection.Open();
+                connection.Close();
+            }
+            catch (SqlException) { throw; }
+   
+
         }
 
         private static string GetConnectionString()

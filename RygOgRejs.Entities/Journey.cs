@@ -19,7 +19,7 @@ namespace RygOgRejs.Entities
         public Journey(Destiantion destiantion, DateTime depatureDate, bool isFirstClass, int adults, int children, double luggaAmount)
         {
             Destination = destiantion;
-            this.depatureDate = depatureDate; //screw validating this
+            this.depatureDate = depatureDate;
             this.isFirstClass = isFirstClass;
             Adults = adults;
             Children = children;

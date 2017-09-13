@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 //handle database
 namespace RygOgRejs.DataAccess
 {
-    abstract class DataRepository
+    public abstract class DataRepository
     {
         protected QueryExecutor executor;
         public DataRepository()
