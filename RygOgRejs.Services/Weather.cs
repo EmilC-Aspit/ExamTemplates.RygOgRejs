@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RygOgRejs.Entities
+namespace RygOgRejs.Services
 {
-    public class Class1
+    public class Weather
     {
     }
 }
