@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RygOgRejs.Entities
 {
-    class Payer
+   public class Payer
     {
         protected string firstname;
         protected string lastname;

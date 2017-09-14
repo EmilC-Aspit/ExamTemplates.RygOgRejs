@@ -19,6 +19,7 @@
             <RowDefinition Height="30" />
             <RowDefinition Height="30" />
             <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
             
         </Grid.RowDefinitions>
         <Label Grid.Column="0"
@@ -35,14 +36,35 @@
                  Grid.Row="1" />
         <Label Grid.Column="0"
                Grid.Row="2"
-               Content="1.klasse" />
-        <CheckBox Grid.Column="1"
-                  Grid.Row="2" />
+               Content="Cpr-nummemr" />
+        <TextBox Grid.Column="1"
+                 Grid.Row="2" 
+                 x:Name="CprNummer"/>
         <Label Grid.Column="0"
                Grid.Row="3"
+               Content="1.klasse" />
+        <CheckBox Grid.Column="1"
+                  Grid.Row="3" />
+        <Label Grid.Column="0"
+               Grid.Row="4"
                Content="Destination" />
         <ComboBox Grid.Column="1"
                   x:Name="destinationBox"
-                  Grid.Row="3" />
+                  Grid.Row="4" />
+        <Label Grid.Column="0"
+               Grid.Row="5"
+               Content="Antal voksne" />
+        <TextBox Grid.Column="1"
+                 Grid.Row="5" />
+        <Label Grid.Column="0"
+               Grid.Row="6"
+               Content="Antal børn" />
+        <TextBox Grid.Column="1"
+                 Grid.Row="6" />
+        <Label Grid.Column="0"
+               Grid.Row="7"
+               Content="Baggage (kg)"/>
+        <TextBox Grid.Column="1"
+                 Grid.Row="7" />
     </Grid>
 </UserControl>

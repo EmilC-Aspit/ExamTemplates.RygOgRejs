@@ -40,7 +40,6 @@ namespace RygOgRejs.Gui
         private void ButtonJourneys_Click(object sender, RoutedEventArgs e)
         {
             Journey journey = new Journey(Destination.Billund, DateTime.Now, true, 1, 0, 20);
-            decimal test = journey.GetCurrentTotal();
             currentUserControlCentre = new DataViewJourneys(GridEntity);
             currentUserControlRight = new RejseData();
             userControlCentre.Content = currentUserControlCentre;

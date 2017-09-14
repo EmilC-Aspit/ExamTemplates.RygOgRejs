@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using RygOgRejs.Entities;
+using RygOgRejs.DataAccess;
 namespace RygOgRejs.Gui
 {
     /// <summary>
@@ -23,7 +24,8 @@ namespace RygOgRejs.Gui
         public DataViewJourneys(List<DataGridEnitty> testEntities)
         {
             InitializeComponent();
-            dataGridJourneys.ItemsSource = testEntities;
+            JourneyRepository dl = new JourneyRepository();
+            dataGridJourneys.ItemsSource = dl.GetAll(); //
         }
 
         private void TextBoxFilterJourneys_TextChanged(object sender, TextChangedEventArgs e)
