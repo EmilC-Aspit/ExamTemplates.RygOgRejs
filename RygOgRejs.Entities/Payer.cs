@@ -16,6 +16,7 @@ namespace RygOgRejs.Entities
         {
             Firstname = firstname;
             Lastname = lastname;
+            Ssn = ssn;
         }
 
         public string Firstname
@@ -29,7 +30,7 @@ namespace RygOgRejs.Entities
                 if (string.IsNullOrEmpty(value))
                     throw new ArgumentException();
                 foreach (char c in value)
-                    if (char.IsLetter(c))
+                    if (!char.IsLetter(c))
                         throw new ArgumentException();
                 firstname = value;
             }
@@ -46,7 +47,7 @@ namespace RygOgRejs.Entities
                 if (string.IsNullOrEmpty(value))
                     throw new ArgumentException();
                 foreach (char c in value)
-                    if (char.IsLetter(c))
+                    if (!char.IsLetter(c))
                         throw new ArgumentException();
                 lastname = value;
             }

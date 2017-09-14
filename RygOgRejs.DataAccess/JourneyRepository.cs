@@ -13,23 +13,25 @@ namespace RygOgRejs.DataAccess
         public List<Journey> GetAll()
         {
             string query = "SELECT * FROM Journeys";
-            List<Journey> Kappa = new List<Journey>();
+            List<Journey> journeyList = new List<Journey>();
             DataSet data = executor.Execute(query);
             DataTableReader reader = data.CreateDataReader();
-            Journey.Destiantion destination;
             while (reader.Read())
             {
-                Enum.TryParse(reader["Destination"].ToString(), out destination);
+                Enum.TryParse(reader["Destination"].ToString(), out Destination destination);
                 DateTime depatureTime = Convert.ToDateTime(reader["DepatureTime"]);
                 int adults = Convert.ToInt32(reader["Adults"]);
                 int children = Convert.ToInt32(reader["Children"]);
                 bool isFirstClass = Convert.ToBoolean(reader["IsFirstClass"]);
                 int luggaeAmount = Convert.ToInt32(reader["LuggageAmount"]);
                 Journey journey = new Journey(destination, depatureTime, isFirstClass, adults, children, luggaeAmount);
-                Kappa.Add(journey);
+                journeyList.Add(journey);
             }
-            return Kappa;
+            return journeyList;
         }
+
+
+        //skulde få den rigtige journey TODO: Test
         public Journey GetJourneyBy(string payerFullName)
         {
             string[] name = payerFullName.Split(' ');
@@ -46,9 +48,8 @@ namespace RygOgRejs.DataAccess
 
 
             reader.Read();
-            Journey.Destiantion destination;
             //make better
-            Enum.TryParse(reader["Destination"].ToString(), out destination);
+            Enum.TryParse(reader["Destination"].ToString(), out Destination destination);
             DateTime depatureTime = Convert.ToDateTime(reader["DepatureTime"]);
             int adults = Convert.ToInt32(reader["Adults"]);
             int children = Convert.ToInt32(reader["Children"]);

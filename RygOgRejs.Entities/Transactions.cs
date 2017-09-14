@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace RygOgRejs.Entities
 {
 
-    //amazing
+    //amazing 
     struct Transactions
     {
         private decimal amount;
@@ -21,6 +21,5 @@ namespace RygOgRejs.Entities
             this.journey = journey;
             timeStamp = DateTime.Now;
         }
-
     }
 }

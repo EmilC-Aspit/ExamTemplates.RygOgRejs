@@ -12,31 +12,79 @@ namespace RygOgRejs.Entities
         private decimal firstClassPrice;
         private decimal luggagePrice;
         private const double taxRate = 0.25; //moms
-        public PriceDetails(decimal destinationPrice, decimal firstClassPrice,decimal luggagePrice)
+
+        private decimal billundA = 395.00M;
+        private decimal billundC = 295.00M;
+
+        private decimal copenhagenA = 1595;
+        private decimal copenhagenC = 1395;
+
+        private decimal palA = 4995;
+        private decimal palC = 3089;
+
+        private decimal totalPrice = 0;
+
+        public PriceDetails(Destination destination, int adults,int children,bool isFirstClass, double luggageAmount)
         {
-            this.destinationPrice = destinationPrice;
-            this.firstClassPrice = firstClassPrice;
-            this.luggagePrice = luggagePrice;
+            if(destination == Destination.Billund )
+            {
+                destinationPrice = adults * billundA + children * billundC;
+                if (isFirstClass == true)
+                    firstClassPrice = 1699;
+                else
+                    firstClassPrice = 0;
+                if (luggageAmount > 25)
+                    luggagePrice = ((decimal)luggageAmount - 25) * 290;
+                else
+                    luggagePrice = 0;
+                totalPrice = luggagePrice + (firstClassPrice * adults * children) + destinationPrice;
+            }
+            else if (destination == Destination.Copenhagen)
+            {
+                destinationPrice = adults * copenhagenA + children * copenhagenC;
+                if (isFirstClass == true)
+                    firstClassPrice = 1699;
+                else
+                    firstClassPrice = 0;
+                if (luggageAmount > 25)
+                    luggagePrice = ((decimal)luggageAmount - 25) * 290;
+                else
+                    luggagePrice = 0;
+                totalPrice = luggagePrice + (firstClassPrice * adults * children) + destinationPrice;
+            }
+            else if (destination == Destination.PalmaDeMalkorca)
+            {
+                destinationPrice = adults * palA + children * palC;
+                if (isFirstClass == true)
+                    firstClassPrice = 1699;
+                else
+                    firstClassPrice = 0;
+                if (luggageAmount > 25)
+                    luggagePrice = ((decimal)luggageAmount - 25) * 290;
+                else
+                    luggagePrice = 0;
+                totalPrice = luggagePrice + (firstClassPrice * adults * children) + destinationPrice;
+            }
+
         }
 
 
-        //TODO just return calculation when program is up running
+        //TODO just return calculation when program is up running (should be doen)
         public decimal GetTaxAmount()
-        {
-            decimal tax = (destinationPrice + firstClassPrice + luggagePrice) * (decimal)taxRate;
-            return tax;
+        { 
+            return totalPrice * (decimal)taxRate;
         }
 
         //TODO sometihn
         public decimal GetTotalWithoutTax()
         {
-            return destinationPrice + firstClassPrice + luggagePrice;
+            return totalPrice;
         }
 
         public decimal GetTotalWithTax()
         {
-            decimal test = ((destinationPrice + firstClassPrice + luggagePrice)) * ((decimal)taxRate + 1);
-            return Math.Round(test); //rounder up
+            decimal totalWithTax = GetTaxAmount() + GetTotalWithoutTax();
+            return Math.Round(totalWithTax); //rounder up for a awesome readable number <3
         }
     }
 }

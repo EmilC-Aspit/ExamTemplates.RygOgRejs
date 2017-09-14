@@ -23,11 +23,11 @@ namespace RygOgRejs.Gui
     public partial class MainWindow: Window
     {
         private UserControl currentUserControlCentre, currentUserControlRight;
-        List<DataGridEnitty> testEntities;
+        List<DataGridEnitty> GridEntity;
         public MainWindow()
         {
             InitializeComponent();
-            testEntities = new List<DataGridEnitty>();
+            GridEntity = new List<DataGridEnitty>();
         }
 
         private void OnMenuFilesClose_Click(object sender, RoutedEventArgs e)
@@ -39,11 +39,12 @@ namespace RygOgRejs.Gui
 
         private void ButtonJourneys_Click(object sender, RoutedEventArgs e)
         {
-            JourneyRepository Kapp = new JourneyRepository();
-            string fullName = "Morten Kappa";
-            Kapp.GetJourneyBy(fullName);
-            currentUserControlCentre = new DataViewJourneys(testEntities);
+            Journey journey = new Journey(Destination.Billund, DateTime.Now, true, 1, 0, 20);
+            decimal test = journey.GetCurrentTotal();
+            currentUserControlCentre = new DataViewJourneys(GridEntity);
+            currentUserControlRight = new RejseData();
             userControlCentre.Content = currentUserControlCentre;
+            userControlRight.Content = currentUserControlRight;
         }
 
         private void MenuHelpAbout_Click(object sender, RoutedEventArgs e)

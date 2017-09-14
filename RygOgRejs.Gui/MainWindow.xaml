@@ -55,9 +55,6 @@
                                     Content="Rejser"
                                     Height="35"
                                     Click="ButtonJourneys_Click" />
-                            <Button x:Name="buttonTransactions"
-                                    Content="Transaktioner"
-                                    Height="35" />
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Grid.Row="1"

@@ -12,38 +12,43 @@ namespace RygOgRejs.Entities
         protected int children;
         protected PriceDetails currenPriceDetails;
         protected DateTime depatureDate;
-        protected Destiantion destiantion;
+        protected Destination destiantion;
         protected bool isFirstClass;
         protected double luggaAmount;
 
-        public Journey(Destiantion destiantion, DateTime depatureDate, bool isFirstClass, int adults, int children, double luggaAmount)
+        public Journey(Destination destiantion, DateTime depatureDate, bool isFirstClass, int adults, int children, double luggaAmount)
         {
+
             Destination = destiantion;
             this.depatureDate = depatureDate;
             this.isFirstClass = isFirstClass;
             Adults = adults;
             Children = children;
             LuggaAmount = luggaAmount;
+            currenPriceDetails = new PriceDetails(Destination, Adults, children, isFirstClass, luggaAmount);
         }
 
         public void AddLuggage(double amount)
         {
             luggaAmount += amount; //??????
+            
         }
 
+        //this is for when you want to edit right?
         public void AddPersons(int adults, int children)
         {
             Adults += adults;
+            Children += children;
         }
 
-        public void ChangeDestination(Destiantion newDestination)
+        public void ChangeDestination(Destination newDestination)
         {
             Destination = newDestination;
         }
 
         public decimal GetCurrentTotal()
         {
-            return 2;
+            return currenPriceDetails.GetTotalWithoutTax(); //is my guess im not sure though
         }
 
         public void RemoveLuggae(double amount)
@@ -85,7 +90,7 @@ namespace RygOgRejs.Entities
             }
         }
 
-        public Destiantion Destination
+        public Destination Destination
         {
             get
             {
@@ -93,7 +98,7 @@ namespace RygOgRejs.Entities
             }
             set
             {
-                if (!Enum.IsDefined(typeof(Destiantion), value))
+                if (!Enum.IsDefined(typeof(Destination), value))
                     throw new ArgumentException("ikke en gyldig destination" + value);
                 destiantion = value;
             }
@@ -112,15 +117,6 @@ namespace RygOgRejs.Entities
                 luggaAmount = value;
             }
 
-        }
-
-
-
-        public enum Destiantion
-        {
-            Billund,
-            Copenhagen,
-            PalmaDeMalkorca
         }
     }
 }
