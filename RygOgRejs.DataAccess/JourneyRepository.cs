@@ -18,7 +18,7 @@ namespace RygOgRejs.DataAccess
             DataTableReader reader = data.CreateDataReader();
             while (reader.Read())
             {
-                Enum.TryParse(reader["Destination"].ToString(), out Destination destination);
+                Enum.TryParse(reader["Destination"].ToString(), out Destination destination); //kage
                 DateTime depatureTime = Convert.ToDateTime(reader["DepatureTime"]);
                 int adults = Convert.ToInt32(reader["Adults"]);
                 int children = Convert.ToInt32(reader["Children"]);
@@ -31,7 +31,7 @@ namespace RygOgRejs.DataAccess
         }
 
 
-        //skulde få den rigtige journey TODO: Test
+        //skulde  fuck at stave ting XDDDDDDD få den rigtige journey TODO: Test
         public Journey GetJourneyBy(string payerFullName)
         {
             string[] name = payerFullName.Split(' ');

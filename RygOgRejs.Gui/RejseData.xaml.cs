@@ -28,5 +28,13 @@ namespace RygOgRejs.Gui
             destinationBox.Items.Add(Destination.Copenhagen);
             destinationBox.Items.Add(Destination.PalmaDeMalkorca);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Payer Morten = new Payer(payerFirstNametext.Text, payerLastNameText.Text, CprNummer.Text);
+            var destination = (Destination)destinationBox.SelectedItem;
+            Journey Billund = new Journey(destination, DateTime.Now, Fistclass.IsEnabled, Convert.ToInt32(voksne.Text), Convert.ToInt32(Børn.Text), Convert.ToInt32(Bagage.Text));
+
+        }
     }
 }

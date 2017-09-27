@@ -8,7 +8,7 @@ namespace RygOgRejs.Entities
 {
 
     //amazing 
-    struct Transactions
+    public struct Transactions
     {
         private decimal amount;
         private Journey journey;

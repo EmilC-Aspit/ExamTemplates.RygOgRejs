@@ -25,7 +25,7 @@ namespace RygOgRejs.Gui
         {
             InitializeComponent();
             JourneyRepository dl = new JourneyRepository();
-            dataGridJourneys.ItemsSource = dl.GetAll(); //
+            dataGridJourneys.ItemsSource = testEntities; //
         }
 
         private void TextBoxFilterJourneys_TextChanged(object sender, TextChangedEventArgs e)
